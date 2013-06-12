@@ -13,7 +13,8 @@
 #define  TableButtonHeight 49
 #define  TableButtonWidth  49
 
-
+#define viewWidth  1024
+#define viewHeight 768
 @interface RootViewController ()
 
 @end
@@ -41,31 +42,31 @@ static RootViewController *seh = NULL;
       _buttonArray=[[NSMutableArray alloc]initWithCapacity:5];
       _allViewArray=[[NSMutableArray alloc]initWithCapacity:5];
 
-     allview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+     allview=[[UIView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [self.view addSubview:allview];
     
     
-    paSystemMapView=[[PASystemMapView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    paSystemMapView=[[PASystemMapView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [paSystemMapView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"snow.jpg"]]];
     [allview addSubview:paSystemMapView];
      [_allViewArray addObject:paSystemMapView];
     
 
-    paStockView=[[PAStockView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    paStockView=[[PAStockView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [paStockView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"nightcloud.jpg"]]];
     [_allViewArray addObject:paStockView];
     
     
-    paSettingView=[[PASettingView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    paSettingView=[[PASettingView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [paSettingView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"night.jpg"]]];
     [_allViewArray addObject:paSettingView];
 
     
-    paNewsView=[[PANewsView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    paNewsView=[[PANewsView alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [paNewsView setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"index_bg.jpg"]]];
     [_allViewArray addObject:paNewsView];
     
-    organizationListMapView=[[OrganizationListMapView  alloc]initWithFrame:CGRectMake(0, 0, 1024, 768)];
+    organizationListMapView=[[OrganizationListMapView  alloc]initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
     [_allViewArray addObject:organizationListMapView];
     
     
@@ -140,11 +141,12 @@ static RootViewController *seh = NULL;
          
         UIButton *tempbutton=[_buttonArray objectAtIndex:i];
         if (i==tag) {
-          [tempbutton setSelected:YES];
+         
             [allview  addSubview:[_allViewArray objectAtIndex:tag]];
+            [tempbutton setSelected:YES];
             
         }else{
-               [[_allViewArray objectAtIndex:i] removeFromSuperview];
+           [[_allViewArray objectAtIndex:i] removeFromSuperview];
            [tempbutton setSelected:NO];
         }
         
